@@ -211,11 +211,38 @@ select {
 }
 
 .hero {
-  width: min(calc(100% - 32px), 1280px);
-  min-height: calc(100vh - 76px);
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 18px);
   display: grid;
   align-items: center;
-  padding-top: 58px;
+  padding: 118px 0 80px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(7, 8, 13, 0.98) 0%, rgba(8, 9, 18, 0.92) 28%, rgba(8, 9, 18, 0.58) 52%, rgba(8, 9, 18, 0.2) 100%),
+    radial-gradient(circle at 24% 52%, rgba(124, 60, 255, 0.24), transparent 32rem),
+    url("assets/doctor-workflow-01.png") center right / cover no-repeat;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(124, 60, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 60, 255, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.9), transparent 62%);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 220px;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, #07080d 84%);
 }
 
 .hero-grid,
@@ -227,9 +254,18 @@ select {
   align-items: center;
 }
 
+.hero .hero-grid {
+  position: relative;
+  z-index: 1;
+  width: min(calc(100% - 32px), var(--max));
+  margin: 0 auto;
+  grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.28fr);
+}
+
 .hero-copy {
   display: grid;
   gap: 24px;
+  max-width: 760px;
 }
 
 .eyebrow {
@@ -254,8 +290,9 @@ select {
 }
 
 .hero-copy p {
-  max-width: 720px;
+  max-width: 680px;
   font-size: 1.12rem;
+  color: #d8e3f8;
 }
 
 .hero-actions,
@@ -269,7 +306,7 @@ select {
   padding: 10px 14px;
   border: 1px solid rgba(124, 60, 255, 0.14);
   border-radius: 999px;
-  color: #626b7e;
+  color: #d8e3f8;
   background: rgba(16, 15, 27, 0.74);
 }
 
@@ -277,6 +314,7 @@ select {
   position: relative;
   min-height: 560px;
   overflow: hidden;
+  display: none;
 }
 
 .orbital {
@@ -1634,6 +1672,10 @@ details p {
     grid-template-columns: 1fr;
   }
 
+  .hero .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
   .hero-visual {
     min-height: 510px;
   }
@@ -1671,8 +1713,12 @@ details p {
   }
 
   .hero {
-    min-height: auto;
-    padding-top: 44px;
+    min-height: 760px;
+    padding-top: 118px;
+    background:
+      linear-gradient(180deg, rgba(7, 8, 13, 0.96) 0%, rgba(7, 8, 13, 0.86) 38%, rgba(7, 8, 13, 0.7) 100%),
+      radial-gradient(circle at 22% 24%, rgba(124, 60, 255, 0.28), transparent 18rem),
+      url("assets/doctor-workflow-01.png") center right / cover no-repeat;
   }
 
   .hero-actions .btn,
