@@ -1142,6 +1142,80 @@ select {
   padding: 42px;
 }
 
+.photo-break {
+  position: relative;
+  display: grid;
+  min-height: 560px;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(124, 60, 255, 0.18);
+  border-radius: 28px;
+  box-shadow: 0 34px 96px rgba(0, 0, 0, 0.36);
+  background-color: #07080d;
+  background-position: center right;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.photo-break::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(7, 8, 13, 0.98) 0%, rgba(7, 8, 13, 0.88) 34%, rgba(7, 8, 13, 0.42) 66%, rgba(7, 8, 13, 0.14) 100%),
+    radial-gradient(circle at 20% 48%, rgba(124, 60, 255, 0.26), transparent 25rem);
+}
+
+.photo-break::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(124, 60, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 60, 255, 0.07) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.9), transparent 66%);
+}
+
+.photo-break-diagnosis {
+  background-image: url("assets/doctor-divider-01.png");
+}
+
+.photo-break-mobile {
+  background-image: url("assets/doctor-divider-02.png");
+}
+
+.photo-break-conversion {
+  background-image: url("assets/doctor-divider-03.png");
+}
+
+.photo-break-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 18px;
+  max-width: 680px;
+  padding: 64px;
+}
+
+.photo-break-content.compact {
+  max-width: 620px;
+}
+
+.photo-break-content h2 {
+  color: #fff;
+}
+
+.photo-break-content p {
+  max-width: 620px;
+  color: #d8e3f8;
+}
+
+.photo-break-content .btn {
+  width: fit-content;
+}
+
 .pdf-preview {
   display: grid;
   place-items: center;
@@ -1781,6 +1855,26 @@ details p {
   .compat-panel,
   .trial-card {
     padding: 26px;
+  }
+
+  .photo-break {
+    min-height: 660px;
+    align-items: end;
+    background-position: center right;
+  }
+
+  .photo-break::before {
+    background:
+      linear-gradient(180deg, rgba(7, 8, 13, 0.26) 0%, rgba(7, 8, 13, 0.78) 44%, rgba(7, 8, 13, 0.98) 100%),
+      radial-gradient(circle at 32% 68%, rgba(124, 60, 255, 0.28), transparent 18rem);
+  }
+
+  .photo-break-content {
+    padding: 30px;
+  }
+
+  .photo-break-content .btn {
+    width: 100%;
   }
 
   .platforms span {
