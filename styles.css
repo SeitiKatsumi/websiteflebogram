@@ -236,7 +236,7 @@ select {
     radial-gradient(circle at 24% 52%, rgba(124, 60, 255, 0.24), transparent 32rem),
     linear-gradient(rgba(124, 60, 255, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(124, 60, 255, 0.08) 1px, transparent 1px);
-  background-size: 48px 48px;
+  background-size: auto, auto, 48px 48px, 48px 48px;
 }
 
 .hero::after {
@@ -261,16 +261,14 @@ select {
   inset: 0;
   opacity: 0;
   background-position: center right;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
-  transform: scale(1.015);
-  transition: opacity 1800ms ease-in-out, transform 7000ms ease;
-  will-change: opacity, transform;
+  transition: opacity 1800ms ease-in-out;
+  will-change: opacity;
 }
 
 .hero-slide.is-active {
   opacity: 1;
-  transform: scale(1);
 }
 
 .hero-grid,
@@ -1831,12 +1829,8 @@ details p {
   }
 
   .hero-slide {
-    background-position: 68% center;
-    transform: scale(1.04);
-  }
-
-  .hero-slide.is-active {
-    transform: scale(1.02);
+    background-position: center top;
+    background-size: 100% auto;
   }
 
   .hero-actions .btn,
