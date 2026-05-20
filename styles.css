@@ -222,10 +222,7 @@ select {
   align-items: center;
   padding: 118px 0 80px;
   overflow: hidden;
-  background:
-    linear-gradient(90deg, rgba(7, 8, 13, 0.98) 0%, rgba(8, 9, 18, 0.92) 28%, rgba(8, 9, 18, 0.58) 52%, rgba(8, 9, 18, 0.2) 100%),
-    radial-gradient(circle at 24% 52%, rgba(124, 60, 255, 0.24), transparent 32rem),
-    url("assets/doctor-workflow-01.png") center right / cover no-repeat;
+  background: #07080d;
 }
 
 .hero::before {
@@ -233,11 +230,13 @@ select {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image:
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(7, 8, 13, 0.98) 0%, rgba(8, 9, 18, 0.92) 28%, rgba(8, 9, 18, 0.58) 52%, rgba(8, 9, 18, 0.2) 100%),
+    radial-gradient(circle at 24% 52%, rgba(124, 60, 255, 0.24), transparent 32rem),
     linear-gradient(rgba(124, 60, 255, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(124, 60, 255, 0.08) 1px, transparent 1px);
   background-size: 48px 48px;
-  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.9), transparent 62%);
 }
 
 .hero::after {
@@ -246,7 +245,32 @@ select {
   inset: auto 0 0;
   height: 220px;
   pointer-events: none;
+  z-index: 1;
   background: linear-gradient(180deg, transparent, #07080d 84%);
+}
+
+.hero-slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #07080d;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-position: center right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scale(1.015);
+  transition: opacity 1800ms ease-in-out, transform 7000ms ease;
+  will-change: opacity, transform;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .hero-grid,
@@ -260,7 +284,7 @@ select {
 
 .hero .hero-grid {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: min(calc(100% - 32px), var(--max));
   margin: 0 auto;
   grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.28fr);
@@ -1793,10 +1817,26 @@ details p {
   .hero {
     min-height: 760px;
     padding-top: 118px;
+    background: #07080d;
+  }
+
+  .hero::before {
     background:
-      linear-gradient(180deg, rgba(7, 8, 13, 0.96) 0%, rgba(7, 8, 13, 0.86) 38%, rgba(7, 8, 13, 0.7) 100%),
-      radial-gradient(circle at 22% 24%, rgba(124, 60, 255, 0.28), transparent 18rem),
-      url("assets/doctor-workflow-01.png") center right / cover no-repeat;
+      linear-gradient(180deg, rgba(7, 8, 13, 0.95) 0%, rgba(7, 8, 13, 0.9) 42%, rgba(7, 8, 13, 0.72) 100%),
+      linear-gradient(90deg, rgba(7, 8, 13, 0.96) 0%, rgba(7, 8, 13, 0.72) 54%, rgba(7, 8, 13, 0.28) 100%),
+      radial-gradient(circle at 22% 24%, rgba(124, 60, 255, 0.3), transparent 18rem),
+      linear-gradient(rgba(124, 60, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124, 60, 255, 0.08) 1px, transparent 1px);
+    background-size: auto, auto, auto, 42px 42px, 42px 42px;
+  }
+
+  .hero-slide {
+    background-position: 68% center;
+    transform: scale(1.04);
+  }
+
+  .hero-slide.is-active {
+    transform: scale(1.02);
   }
 
   .hero-actions .btn,
