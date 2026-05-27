@@ -7,6 +7,19 @@ const heroSlides = Array.from(document.querySelectorAll(".hero-slide"));
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const finePointer = window.matchMedia("(pointer: fine)").matches;
 
+document.querySelectorAll(".brand").forEach((brandLink) => {
+  brandLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    nav?.classList.remove("is-open");
+    menuButton?.setAttribute("aria-expanded", "false");
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
+    history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+  });
+});
+
 menuButton?.addEventListener("click", () => {
   const isOpen = nav.classList.toggle("is-open");
   menuButton.setAttribute("aria-expanded", String(isOpen));
